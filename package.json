@@ -1,24 +1,37 @@
 {
-  "name": "changenow-sdk",
+  "name": "changenow",
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/claretnnamocha/changenow-sdk.git",
   "author": "Claret Nnamocha <devclareo@gmail.com>",
   "license": "MIT",
+  "description": "Node JS Wrapper for https://changenow.io",
   "scripts": {
-    "lint": "eslint --ext .js,.ts --fix ."
+    "lint": "eslint --ext .js,.ts --fix .",
+    "test": "mocha -r ts-node/register 'tests/**/*.spec.js'  --timeout 30000",
+    "build": "tsc",
+    "prepublishOnly": "npm build && npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
   },
   "devDependencies": {
+    "@types/mocha": "^9.1.1",
     "@types/node": "^18.0.0",
     "@typescript-eslint/eslint-plugin": "^5.30.3",
     "@typescript-eslint/parser": "^5.30.3",
+    "dotenv": "^16.0.1",
     "eslint": "^7.32.0 || ^8.2.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.25.2",
-    "ts-node": "^10.8.1"
+    "mocha": "^10.0.0",
+    "ts-node": "^10.8.2"
   },
   "dependencies": {
     "@types/node-fetch": "^2.6.2",
-    "node-fetch": "^3.2.6"
-  }
+    "node-fetch": "2.6.7"
+  },
+  "files": [
+    "lib/**/*"
+  ]
 }
