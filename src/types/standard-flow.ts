@@ -8,7 +8,7 @@ export interface createExchangeTransaction {
   from: string;
   to: string;
   address: string;
-  amount: string;
+  amount: number;
   refundAddress?: string;
 }
 

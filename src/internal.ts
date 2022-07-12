@@ -1,34 +1,42 @@
 import fetch from 'node-fetch';
+import * as types from './types';
 
 const BASE_URL = 'https://api.changenow.io';
 
-export const getApiKey = () => {
-  const { CHANGENOW_API_KEY } = process.env;
-  return CHANGENOW_API_KEY;
+let CHANGENOW_API_KEY: string;
+
+export const setApiKey = (key: string) => {
+  CHANGENOW_API_KEY = key;
 };
 
+export const getApiKey = () => CHANGENOW_API_KEY;
+
 export const request = async ({
-  url, body = {}, method, prefix = '/v1',
-}) => {
-  try {
-    let headers: any = { 'content-type': 'application/json' };
+  url,
+  body = {},
+  method,
+  prefix = '/v1',
+}: types.request) => {
+  if (!CHANGENOW_API_KEY) {
+    throw new Error('No API Key provided');
+  }
 
-    if (prefix === '/v2') {
-      headers = { ...headers, 'x-changenow-api-key': getApiKey() };
-    }
+  let headers: any = { 'content-type': 'application/json' };
 
-    let response: any = await fetch(`${BASE_URL + prefix}/${url}`, {
-      body: Object.keys(body).length ? JSON.stringify(body) : undefined,
-      method,
-      headers,
-    });
-    response = await response.json();
-
-    return response;
-  } catch (error) {
-    return {
-      status: false,
-      message: 'An error occured calling changenow.io',
+  if (prefix === '/v2') {
+    headers = {
+      ...headers,
+      'x-changenow-api-key': getApiKey(),
+      'x-api-key': getApiKey(),
     };
   }
+
+  let response: any = await fetch(`${BASE_URL + prefix}/${url}`, {
+    body: Object.keys(body).length ? JSON.stringify(body) : undefined,
+    method,
+    headers,
+  });
+  response = await response.json();
+
+  return response;
 };

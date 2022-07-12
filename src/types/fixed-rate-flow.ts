@@ -22,7 +22,7 @@ export interface createFixedRateExchange {
   from: string;
   to: string;
   address: string;
-  amount: string;
+  amount: number;
   refundAddress?: string;
 }
 
@@ -30,6 +30,6 @@ export interface createReverseFixedRateExchange {
   from: string;
   to: string;
   address: string;
-  result: string;
+  result: number;
   refundAddress?: string;
 }

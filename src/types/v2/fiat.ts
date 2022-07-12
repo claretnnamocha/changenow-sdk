@@ -12,7 +12,7 @@ export interface createExchangeTransaction {
     | 'VISA_MC2'
     | 'LUQAPAY'
     | 'CRYPTO_THROUGH_CN';
-  payout_type:
+  payout_type?:
     | 'SEPA_1'
     | 'VISA_MC1'
     | 'VISA_MC2'
@@ -26,7 +26,7 @@ export interface transactionStatus {
 
 export interface estimate {
   from_currency: string;
-  from_amount: string;
+  from_amount: number;
   to_currency: string;
   from_network?: string;
   to_network?: string;

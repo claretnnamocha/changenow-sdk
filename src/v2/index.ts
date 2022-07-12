@@ -97,7 +97,6 @@ export const transactionStatus = async (body: types.transactionStatus) => {
     url: `exchange/by-id?id=${id}`,
     method: 'get',
     prefix: '/v2',
-    body,
   });
 };
 
@@ -107,7 +106,6 @@ export const addressValidation = async (body: types.addressValidation) => {
     url: `validate/address?currency=${currency}&address=${address}`,
     method: 'get',
     prefix: '/v2',
-    body,
   });
 };
 
@@ -117,7 +115,6 @@ export const userAddresses = async (body: types.userAddresses) => {
     url: `addresses-by-name?name=${name}`,
     method: 'get',
     prefix: '/v2',
-    body,
   });
 };
 
@@ -142,7 +139,6 @@ export const estimatedExchangeNetworkFee = async (
       + `&convertedNetwork=${convertedNetwork}`,
     method: 'get',
     prefix: '/v2',
-    body,
   });
 };
 
@@ -164,7 +160,6 @@ export const marketEstimateFiatCryptoToCrypto = async (
       + `&toAmount=${toAmount || ''}&type=${type}`,
     method: 'get',
     prefix: '/v2',
-    body,
   });
 };
 
@@ -187,7 +182,6 @@ export const exchanges = async (body: types.exchanges) => {
       + `&requestId=${requestId}`,
     method: 'get',
     prefix: '/v2',
-    body,
   });
 };
 

@@ -8,9 +8,9 @@ export interface currencyInfo {
 }
 
 export interface listOfTransactions {
-  from: string;
-  to: string;
-  status:
+  from?: string;
+  to?: string;
+  status?:
     | 'new'
     | 'waiting'
     | 'confirming'

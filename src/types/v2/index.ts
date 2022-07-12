@@ -1,6 +1,8 @@
 export interface listAvailableCurrencies {
-  buy: boolean;
-  sell: boolean;
+  buy?: boolean;
+  sell?: boolean;
+  active?: boolean;
+  flow?: 'standard' | 'fixed-rate';
 }
 
 export interface minimalExchangeAmount {
@@ -8,7 +10,7 @@ export interface minimalExchangeAmount {
   to: string;
   fromNetwork: string;
   toNetwork: string;
-  flow: 'standard' | 'fixed-rate';
+  flow?: 'standard' | 'fixed-rate';
 }
 
 export interface listAllAvailablePairs {
@@ -31,7 +33,7 @@ export interface estimatedExchangeAmount {
   from: string;
   to: string;
   fromAmount: number;
-  toAmount: number;
+  toAmount?: number;
   fromNetwork?: string;
   toNetwork?: string;
   flow?: 'standard' | 'fixed-rate';
@@ -44,8 +46,8 @@ export interface createExchangeTransaction {
   fromNetwork: string;
   toCurrency: string;
   toNetwork: string;
-  fromAmount: string;
-  toAmount: string;
+  fromAmount: number;
+  toAmount?: number;
   address: string;
   extraId?: string;
   refundAddress?: string;
@@ -90,12 +92,12 @@ export interface marketEstimateFiatCryptoToCrypto {
 }
 
 export interface exchanges {
-  limit: number;
-  offset: number;
-  sortDirection: 'ASC' | 'DESC';
-  sortField: 'createdAt' | 'updatedAt';
-  dateField: 'createdAt' | 'updatedAt';
-  dateFrom: string;
-  dateTo: string;
-  requestId: string;
+  limit?: number;
+  offset?: number;
+  sortDirection?: 'ASC' | 'DESC';
+  sortField?: 'createdAt' | 'updatedAt';
+  dateField?: 'createdAt' | 'updatedAt';
+  dateFrom?: string;
+  dateTo?: string;
+  requestId?: string;
 }
