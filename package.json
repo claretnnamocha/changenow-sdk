@@ -1,6 +1,6 @@
 {
   "name": "changenow",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "repository": "https://github.com/claretnnamocha/changenow-sdk.git",
   "author": "Claret Nnamocha <devclareo@gmail.com>",
@@ -10,7 +10,7 @@
     "lint": "eslint --ext .js,.ts --fix .",
     "test": "mocha -r ts-node/register 'tests/**/*.spec.js'  --timeout 30000",
     "build": "tsc",
-    "prepublishOnly": "npm build && npm test && npm run lint",
+    "prepublishOnly": "npm build && npm run lint",
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags"

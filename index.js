@@ -1,4 +1,4 @@
-import * as ChangeNow from './src';
+import * as ChangeNow from './lib';
 
 export { ChangeNow };
 
